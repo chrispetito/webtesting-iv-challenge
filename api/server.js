@@ -2,10 +2,14 @@ const express = require('express')
 
 const server = express()
 
+const dodgersRouter = require('../dodgers/dodgers-router')
+
 server.use(express.json())
 
+server.use('/api/dodgers', dodgersRouter)
+
 server.get('/', (req, res) => {
-    res.send('Web Testing IV Challenge')
+    res.json({ message: 'Example JSON for Web Testing IV Challenge' })
 })
 
 module.exports = server;
