@@ -45,7 +45,13 @@ describe('dodgers model', () => {
     })
     describe('remove()', () => {
         it('should return a 200 when removing players', async () => {
-            
+            const player = ({ name: 'example', jersey_number: 0, position:'example'})
+            const res = await supertest(server).delete('/api/dodgers/:id').send(player)
+
+            expect(res.status).toBe(200)
+        })
+        it('should return JSON after deletion of a player',  () => {
+            return supertest(server).delete('/api/dodgers/:id').expect('content-type', /json/i)
         })
     })
 })
