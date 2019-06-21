@@ -21,4 +21,22 @@ router.post('/', (req, res) => {
     })
 })
 
+router.delete('/:id', (req, res) => {
+    db.remove(req.params.id).then(() => {
+        res.status(200).json({ message: 'removed succesfully'})
+    })
+    .catch(err => {
+        res.status(500).json(err)
+    })
+})
+
+router.get('/:id', (req, res) => {
+    db.findById(req.params.id).then(player => {
+        res.status(200).json(player)
+    })
+    .catch(err => {
+        res.status(500).json(err)
+    })
+})
+
 module.exports = router;

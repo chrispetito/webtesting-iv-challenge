@@ -2,7 +2,9 @@ const db = require("../data/dbConfig");
 
 module.exports = {
   getAll,
-  insert
+  insert,
+  remove,
+  findById
 };
 
 function getAll() {
@@ -17,4 +19,16 @@ function insert(player) {
         .where({ id: ids[0] })
         .first();
     });
+}
+
+function remove(id) {
+  return db("players")
+    .where("id", id)
+    .delete();
+}
+
+function findById(id) {
+  return db("players")
+    .where({ id })
+    .first();
 }

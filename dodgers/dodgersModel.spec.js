@@ -1,7 +1,7 @@
 const db = require('../data/dbConfig')
 const server = require('../api/server')
 const supertest = require('supertest')
-const { insert } = require('./dodgers-model')
+const { insert, remove } = require('./dodgers-model')
 
 describe('dodgers model', () => {
     beforeEach(async () => {
@@ -41,6 +41,11 @@ describe('dodgers model', () => {
             const res = await supertest(server).post('/api/dodgers').send(player)
 
             expect(res.status).toBe(201)
+        })
+    })
+    describe('remove()', () => {
+        it('should return a 200 when removing players', async () => {
+            
         })
     })
 })
